@@ -1,0 +1,297 @@
+/*
+ * Button styles.
+ *
+ * Variants only set the --btn-* custom properties below; `.btn` and its state selectors read
+ * them. All values come from design tokens (--hui-*), never literals, so the button follows
+ * ConfigProvider theming (brand color, dark mode, radius, ...) with no extra code.
+ */
+
+.btn {
+  /* resolved per variant below */
+  --btn-color: var(--hui-color-text);
+  --btn-bg: var(--hui-color-bg-container);
+  --btn-border: var(--hui-color-border);
+  --btn-color-hover: var(--hui-color-primary-hover);
+  --btn-bg-hover: var(--btn-bg);
+  --btn-border-hover: var(--hui-color-primary-hover);
+  --btn-color-active: var(--hui-color-primary-active);
+  --btn-bg-active: var(--btn-bg);
+  --btn-border-active: var(--hui-color-primary-active);
+  --btn-outline: var(--hui-control-outline);
+  --btn-shadow: 0 2px 0 rgba(0, 0, 0, 0.02);
+
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--hui-size-xs);
+  height: var(--hui-control-height);
+  padding: 0 calc(var(--hui-size-md) - var(--hui-line-width));
+  font-family: var(--hui-font-family);
+  font-size: var(--hui-font-size);
+  font-weight: 400;
+  line-height: var(--hui-line-height);
+  white-space: nowrap;
+  text-align: center;
+  text-decoration: none;
+  color: var(--btn-color);
+  background: var(--btn-bg);
+  border: var(--hui-line-width) var(--hui-line-type) var(--btn-border);
+  border-radius: var(--hui-border-radius);
+  box-shadow: var(--btn-shadow);
+  outline: 0 solid transparent;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  transition:
+    color var(--hui-motion-duration-mid) var(--hui-motion-ease-in-out),
+    background-color var(--hui-motion-duration-mid) var(--hui-motion-ease-in-out),
+    border-color var(--hui-motion-duration-mid) var(--hui-motion-ease-in-out),
+    box-shadow var(--hui-motion-duration-mid) var(--hui-motion-ease-in-out),
+    outline-color var(--hui-motion-duration-mid) var(--hui-motion-ease-in-out);
+}
+
+.btn:not(:disabled):not(.btn-disabled):hover {
+  color: var(--btn-color-hover);
+  background: var(--btn-bg-hover);
+  border-color: var(--btn-border-hover);
+}
+
+.btn:not(:disabled):not(.btn-disabled):active {
+  color: var(--btn-color-active);
+  background: var(--btn-bg-active);
+  border-color: var(--btn-border-active);
+}
+
+.btn:focus-visible {
+  outline: 4px solid var(--btn-outline);
+  outline-offset: 1px;
+}
+
+.btn > span {
+  display: inline-block;
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ---------- types ---------- */
+
+.btn-primary {
+  --btn-color: var(--hui-color-white);
+  --btn-bg: var(--hui-color-primary);
+  --btn-border: transparent;
+  --btn-color-hover: var(--hui-color-white);
+  --btn-bg-hover: var(--hui-color-primary-hover);
+  --btn-border-hover: transparent;
+  --btn-color-active: var(--hui-color-white);
+  --btn-bg-active: var(--hui-color-primary-active);
+  --btn-border-active: transparent;
+  --btn-shadow: 0 2px 0 var(--hui-control-outline);
+}
+
+.btn-default {
+  /* defaults on .btn */
+}
+
+.btn-dashed {
+  border-style: dashed;
+}
+
+.btn-link {
+  --btn-color: var(--hui-color-link);
+  --btn-bg: transparent;
+  --btn-border: transparent;
+  --btn-color-hover: var(--hui-color-link-hover);
+  --btn-border-hover: transparent;
+  --btn-color-active: var(--hui-color-link-active);
+  --btn-border-active: transparent;
+  --btn-shadow: none;
+}
+
+.btn-text {
+  --btn-bg: transparent;
+  --btn-border: transparent;
+  --btn-color-hover: var(--hui-color-text);
+  --btn-bg-hover: var(--hui-color-bg-text-hover);
+  --btn-border-hover: transparent;
+  --btn-color-active: var(--hui-color-text);
+  --btn-bg-active: var(--hui-color-bg-text-active);
+  --btn-border-active: transparent;
+  --btn-shadow: none;
+}
+
+/* ---------- danger ---------- */
+
+.btn-dangerous {
+  --btn-outline: var(--hui-color-error-outline);
+}
+
+.btn-dangerous.btn-default,
+.btn-dangerous.btn-dashed {
+  --btn-color: var(--hui-color-error);
+  --btn-border: var(--hui-color-error);
+  --btn-color-hover: var(--hui-color-error-hover);
+  --btn-border-hover: var(--hui-color-error-hover);
+  --btn-color-active: var(--hui-color-error-active);
+  --btn-border-active: var(--hui-color-error-active);
+}
+
+.btn-dangerous.btn-primary {
+  --btn-bg: var(--hui-color-error);
+  --btn-bg-hover: var(--hui-color-error-hover);
+  --btn-bg-active: var(--hui-color-error-active);
+  --btn-shadow: 0 2px 0 var(--hui-color-error-outline);
+}
+
+.btn-dangerous.btn-link {
+  --btn-color: var(--hui-color-error);
+  --btn-color-hover: var(--hui-color-error-hover);
+  --btn-color-active: var(--hui-color-error-active);
+}
+
+.btn-dangerous.btn-text {
+  --btn-color: var(--hui-color-error);
+  --btn-color-hover: var(--hui-color-error-hover);
+  --btn-bg-hover: var(--hui-color-error-bg);
+  --btn-color-active: var(--hui-color-error-active);
+  --btn-bg-active: var(--hui-color-error-bg-hover);
+}
+
+/* ---------- ghost ---------- */
+
+.btn-background-ghost {
+  --btn-bg: transparent;
+  --btn-bg-hover: transparent;
+  --btn-bg-active: transparent;
+  --btn-shadow: none;
+}
+
+.btn-background-ghost.btn-default,
+.btn-background-ghost.btn-dashed {
+  --btn-color: var(--hui-color-bg-container);
+  --btn-border: var(--hui-color-bg-container);
+}
+
+.btn-background-ghost.btn-primary {
+  --btn-color: var(--hui-color-primary);
+  --btn-border: var(--hui-color-primary);
+  --btn-color-hover: var(--hui-color-primary-hover);
+  --btn-border-hover: var(--hui-color-primary-hover);
+  --btn-color-active: var(--hui-color-primary-active);
+  --btn-border-active: var(--hui-color-primary-active);
+}
+
+.btn-background-ghost.btn-dangerous.btn-primary {
+  --btn-color: var(--hui-color-error);
+  --btn-border: var(--hui-color-error);
+  --btn-color-hover: var(--hui-color-error-hover);
+  --btn-border-hover: var(--hui-color-error-hover);
+  --btn-color-active: var(--hui-color-error-active);
+  --btn-border-active: var(--hui-color-error-active);
+}
+
+/* ---------- sizes ---------- */
+
+.btn-lg {
+  height: var(--hui-control-height-lg);
+  font-size: var(--hui-font-size-lg);
+  line-height: var(--hui-line-height-lg);
+  border-radius: var(--hui-border-radius-lg);
+}
+
+.btn-sm {
+  height: var(--hui-control-height-sm);
+  padding: 0 calc(var(--hui-size-xs) - var(--hui-line-width));
+  border-radius: var(--hui-border-radius-sm);
+}
+
+/* ---------- shapes ---------- */
+
+.btn-round {
+  border-radius: 999px;
+}
+
+.btn-circle,
+.btn-icon-only {
+  width: var(--hui-control-height);
+  padding: 0;
+}
+
+.btn-circle {
+  border-radius: 50%;
+}
+
+.btn-icon-only.btn-lg,
+.btn-circle.btn-lg {
+  width: var(--hui-control-height-lg);
+}
+
+.btn-icon-only.btn-sm,
+.btn-circle.btn-sm {
+  width: var(--hui-control-height-sm);
+}
+
+.btn-icon-only {
+  font-size: calc(var(--hui-font-size) + 2px);
+}
+
+.btn-block {
+  display: flex;
+  width: 100%;
+}
+
+/* ---------- states ---------- */
+
+.btn-loading {
+  cursor: default;
+  pointer-events: none;
+}
+
+.btn-loading::before {
+  content: '';
+  position: absolute;
+  inset: calc(var(--hui-line-width) * -1);
+  z-index: 1;
+  background: var(--hui-color-bg-container);
+  border-radius: inherit;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.btn:disabled,
+.btn-disabled {
+  --btn-color: var(--hui-color-text-disabled);
+  --btn-bg: var(--hui-color-bg-container-disabled);
+  --btn-border: var(--hui-color-border);
+  --btn-shadow: none;
+  cursor: not-allowed;
+}
+
+.btn:disabled.btn-dashed,
+.btn-disabled.btn-dashed {
+  border-style: dashed;
+}
+
+.btn:disabled.btn-link,
+.btn:disabled.btn-text,
+.btn-disabled.btn-link,
+.btn-disabled.btn-text {
+  --btn-bg: transparent;
+  --btn-border: transparent;
+}
+
+.btn:disabled.btn-background-ghost,
+.btn-disabled.btn-background-ghost {
+  --btn-bg: transparent;
+  --btn-border: var(--hui-color-border);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}

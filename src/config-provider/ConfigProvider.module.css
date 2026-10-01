@@ -1,0 +1,4 @@
+/* The wrapper only carries CSS variables; it must not affect layout. */
+.config {
+  display: contents;
+}
