@@ -1,0 +1,27 @@
+/*
+ * Click "wave": an absolutely positioned ring that expands via box-shadow spread while fading.
+ * The host element must be `position: relative`. Color comes from --wave-color.
+ */
+.wave {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  box-shadow: 0 0 0 0 var(--wave-color, var(--hui-color-primary));
+  opacity: 0.2;
+  pointer-events: none;
+  animation: wave-effect 0.6s var(--hui-motion-ease-out-circ) forwards;
+}
+
+@keyframes wave-effect {
+  to {
+    box-shadow: 0 0 0 6px var(--wave-color, var(--hui-color-primary));
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave {
+    display: none;
+  }
+}
